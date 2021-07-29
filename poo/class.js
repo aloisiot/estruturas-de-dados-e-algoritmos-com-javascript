@@ -4,32 +4,36 @@
 // Essa maneira de declaração de classes foi introduzida a partir do ES2015.
 class Livros{
 
-    // A função construtora que será invocada ao instanciar um novo objeto da classe Livros.
-    constructor(name, pages, isbn){
-        this.name=name;
-        this.pages=pages;
+    // Função construtora que será invocada ao instanciar um novo objeto da classe Livros.
+    constructor(nome, paginas, isbn){
+        this.nome=nome;
+        this.paginas=paginas;
         this.isbn=isbn;
     }
 
-    // Método para impressão de determinada informação de uma instância dessa classe.
-    printIsbn(){
-        console.log(this.isbn);
+    printInfo(){ // imprime as informações a cerca do livro
+        console.log(`
+        Nome: ${this.nome};
+        Páginas: ${this.paginas};
+        Isbn: ${this.isbn}.
+        `);
     }
 }
 
 // Instanciaçãos da classe Livros
 const sapiens=new Livros('Uma breve história da humanidade', 591, '978-85-254-3461-6');
 
-// Invocação do metodo criado anteriormente
-sapiens.printIsbn();
+sapiens.printInfo();// Invocação do método
+
+
 
 // Há também outra maneira de declarar uma classe, como feito abaixo
 function Filmes(titulo, diretor, duracao){
     this.titulo=titulo;
     this.duracao=duracao;
     this.diretor=diretor;
-
-    this.printInfo=()=>{
+    
+    this.printInfo=()=>{ // Imprime as informaçoes a cerca do livro
         console.log(`
         Titulo: ${this.titulo};
         Diretor: ${this.diretor};
@@ -38,6 +42,7 @@ function Filmes(titulo, diretor, duracao){
     }
 }
 
+// Instanciaçãos da classe Filmes
 const avatar=new Filmes('Avatar','James Cameron', 9720);
 
-avatar.printInfo();
+avatar.printInfo();// Invocação do metodo criado anteriormente
