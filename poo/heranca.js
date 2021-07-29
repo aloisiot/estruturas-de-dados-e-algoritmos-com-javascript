@@ -2,8 +2,8 @@
 
 class Livros {
 
-    constructor(name, paginas, isbn) {
-        this.name = name;
+    constructor(nome, paginas, isbn) {
+        this.nome = nome;
         this.paginas = paginas;
         this.isbn = isbn;
     }
@@ -15,8 +15,8 @@ class Livros {
 
 // Estendendo a class Livros.
 class LivrosTI extends Livros {
-    constructor(name, paginas, isbn, tecnologia) {
-        super(name, paginas, isbn); // a função super() instancia os atributos da classe estendida.
+    constructor(nome, paginas, isbn, tecnologia) {
+        super(nome, paginas, isbn); // a função super() instancia os atributos da classe estendida.
 
         this.tecnologia = tecnologia; // atributo declaradopara a nova classe.
     }
@@ -33,4 +33,6 @@ class LivrosTI extends Livros {
 
 }
 
-const java = new LivrosTI('Java, como programar', 934, '978-85-430-0479-2', 'Java')
+const java = new LivrosTI('Java, como programar', 934, '978-85-430-0479-2', 'Java');
+
+java.printInfo();
