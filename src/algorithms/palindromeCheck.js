@@ -3,8 +3,8 @@ const Deque = require('../data-structures/Deque');
 
 /**
  * Analise se uma string é um palindromo ou não;
- * @param {*} aString String a ser analisada
  * @returns {Boolean} boolean
+ * @param {*} aString String a ser analisada
  */
 function palindromeCheck(aString){
     if(aString===undefined||aString===null||(aString.length===0&&aString!==null)){
@@ -13,9 +13,10 @@ function palindromeCheck(aString){
 
     let isEqual=true
     const deque=new Deque()
+    let s=aString.toLocaleLowerCase().split(' ').join('');
 
-    for(let i=0;i<aString.length;i++){
-        deque.addBack(aString.charAt(i).toLocaleLowerCase())
+    for(let i=0;i<s.length;i++){
+        deque.addBack(s.charAt(i));
     }
 
     while(deque.size()>1&&isEqual){

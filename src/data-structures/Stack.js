@@ -4,7 +4,7 @@
  * { Class } Estrutura de dados indexada do tipo Pilha
  */
 
-function Stack(){
+module.exports=function Stack(){
         let _count = 0
         let _itens = {};
 
@@ -75,5 +75,3 @@ function Stack(){
     }
 
 }
-
-export default Stack;

@@ -3,7 +3,7 @@
 /**
  * { Class } Estrutura de dados indexada do tipo Fila.
  */
-function Queue() {
+module.exports = function Queue() {
 
     let _lowestCount = 0;
     let _highestCount = 0;
@@ -76,5 +76,3 @@ function Queue() {
     }
 
 }
-
-module.exports=Queue;
