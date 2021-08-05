@@ -1,5 +1,6 @@
-const Queue=require('./src/data-structures/Queue');
+let a =[1,4,'r,4wr','34',true];
 
-const queue=new Queue;
-
-console.log(queue);
+function tst(...a){
+    console.log(a[2])
+}
+tst(...a);

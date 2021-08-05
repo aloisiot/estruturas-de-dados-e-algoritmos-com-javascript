@@ -97,4 +97,4 @@ function Deque(){
     }
 }
 
-export default Deque;
+module.exports= Deque;
