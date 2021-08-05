@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 
 
 /**
@@ -9,7 +9,7 @@
  */
 
 function baseConverter(decimalNum, base) {
-    const Stack = require('../data-structures/stack');
+    const Stack = require("../data-structures/Stack");
     const remStack = new Stack();
     let number = decimalNum
     let digits = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -32,4 +32,6 @@ function baseConverter(decimalNum, base) {
     return baseString;
 }
 
+
+baseConverter(12,2)
 module.exports = baseConverter;

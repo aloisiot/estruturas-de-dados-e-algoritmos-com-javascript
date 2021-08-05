@@ -1,79 +1,79 @@
 // @ts-check
 
 /**
- * Estrutura de dados indexada do tipo Pilha
+ * { Function } Estrutura de dados indexada do tipo Pilha
  */
-
-class Stack {
-    constructor() {
-        this.count = 0
-        this.itens = {};
-    }
+const stack = () => {
+    let stack = {};
+    let count = 0;
 
     /**
-     * @returns Retorna true caso não haja elementos na fila; retorna false caso não haja elementos na fila;
+     * Remove o ultimo elemento da pilha
+     * @returns Retorna o valor removido; caso a pilha esteja vazia retorna undefined
      */
-    isEmpty() {
-        return this.count === 0;
-    }
+    const pop = () => {
+        if(isEmpty()) return undefined;
+
+        let result = stack[count - 1];
+        delete stack[count - 1];
+        count--;
+        return result;
+    };
 
     /**
      * Insere um novo elemento na pilha
-     * @param {*} item Elemento a ser inserido na pilha
+     * @param {*} element Elemento a ser inserido na pilha
      */
-    push(item) {
-        this.itens[this.count] = item;
-        this.count++;
-    }
-
-    /**
-     * @returns Retorna o valor removido; caso a pilha esteja vazia retorna undefined
-     */
-    pop() {
-        if (this.isEmpty()) return undefined;
-
-        this.count--;
-        let result = this.itens[this.count];
-        delete this.itens[this.count];
-        return result;
+    const push = (element) => {
+        stack[count] = element;
+        count++;
     }
 
     /**
      * @returns Retorna o elemento contido no topo da pilha; caso a pilha esteja vazia retorna undefined
      */
-    peek() { 
-        return this.itens[this.count - 1]; 
-    }
+    const peek = () => stack[count - 1];
 
     /**
      * @returns Retorna o número de elementos contidos na pilha;
      */
-    size() { 
-        return this.count; 
-    }
+    const size = () => count;
 
     /**
-     * Removo todos os elementos da pilha;
+     * Remove todos os elementos da pilha;
      */
-    clear() { 
-        this.itens = {}; 
-    }
+    const clear = () => {
+        stack = {};
+        count = 0;
+    };
+
+    /**
+     * @returns Retorna true caso não haja elementos na fila; retorna false caso não haja elementos na fila;
+     */
+    const isEmpty = () => count === 0;
 
     /**
      * @returns Retorna uma string contendo todos os elementos da pilha separados por virgula
      */
-    toString() {
-        if (this.isEmpty()) return '';
+    const toString = () => {
+        if (isEmpty()) return '';
 
-        let objString = `${this.itens[0]}`;
-
-        for (let i = 1; i < this.count; i++) {
-            objString += `,${this.itens[i]}`;
+        let result = `${stack[0]}`;
+        for (let i = 1; i < count; i++) {
+            result += `,${stack[i]}`;
         }
-
-        return objString;
+        return result;
     }
 
+    return {
+        pop,
+        push,
+        peek,
+        size,
+        clear,
+        isEmpty,
+        toString,
+    }
 }
 
-module.exports = Stack;
+module.exports = stack;

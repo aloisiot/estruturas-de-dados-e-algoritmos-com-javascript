@@ -1,4 +1,5 @@
+const Queue = require('../data-structures/Queue');
 
-const baseConverter=require('../algorithms/baseConverter');
+const queue=new Queue();
 
-console.log(baseConverter(100345, 7));
+console.log(queue.peek())
