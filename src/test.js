@@ -1,4 +1,4 @@
-const Queue=requuire('./data-structures/Queue');
+const Queue=require('./data-structures/Queue');
 
 const queue= new Queue()
 
@@ -8,6 +8,6 @@ queue.enqueue('mario');
 queue.enqueue('Marcia');
 queue.enqueue('davi');
 queue.enqueue('Tamires');
-queue.enqueue('gereremias');
+queue.dequeue();
 queue.clear()
-console.log(queue.size())
+console.log(queue.size()+10)

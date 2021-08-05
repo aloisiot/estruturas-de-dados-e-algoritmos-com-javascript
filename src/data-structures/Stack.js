@@ -9,7 +9,8 @@ function Stack(){
         let _itens = {};
 
     /**
-     * @returns Retorna true caso não haja elementos na fila; retorna false caso não haja elementos na fila;
+     * Analisa se a Pilha está vazia
+     * @returns {Boolean} boolean
      */
     this.isEmpty=()=> {
         return _count === 0;
@@ -26,7 +27,7 @@ function Stack(){
 
     /**
      * Remove o ultimo elemento da pilha
-     * @returns Retorna o valor removido; caso a pilha esteja vazia retorna undefined
+     * @returns {*} Retorna o valor removido; caso a pilha esteja vazia retorna undefined
      */
     this.pop=()=> {
         if (this.isEmpty()) return undefined;
@@ -38,14 +39,14 @@ function Stack(){
     }
 
     /**
-     * @returns Retorna o elemento contido no topo da pilha; caso a pilha esteja vazia retorna undefined
+     * @returns {*} Retorna o elemento contido no topo da pilha; caso a pilha esteja vazia retorna undefined
      */
     this.peek=()=> { 
         return _itens[_count - 1]; 
     }
 
     /**
-     * @returns Retorna o número de elementos contidos na pilha;
+     * @returns {Number} Retorna o número de elementos contidos na pilha;
      */
     this.size=()=> { 
         return _count; 
@@ -59,7 +60,7 @@ function Stack(){
     }
 
     /**
-     * @returns Retorna uma string contendo todos os elementos da pilha separados por virgula
+     * @returns {String} Retorna uma string contendo todos os elementos da pilha separados por virgula
      */
     this.toString=()=> {
         if (this.isEmpty()) return '';

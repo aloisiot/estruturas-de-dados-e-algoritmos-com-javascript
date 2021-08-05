@@ -20,7 +20,7 @@ function Queue() {
 
     /**
      * Remove o primeiro elemento da fila
-     * @returns Retorna o elemento removido da fila
+     * @returns {*} Retorna o elemento removido
      */
     this.dequeue = () => {
         if (this.isEmpty()) return undefined;
@@ -40,7 +40,7 @@ function Queue() {
     }
 
     /**
-     * @returns Retorna o primeiro elemento da fila
+     * @returns {*} Retorna o primeiro elemento da fila
      */
     this.peek = () => {
         if (this.isEmpty()) return undefined;
@@ -48,21 +48,22 @@ function Queue() {
     }
 
     /**
-     * @returns Retorna a quantidade de elementos contidos na fila
+     * @returns {Number} Retorna a quantidade de elementos contidos na fila
      */
     this.size = () => {
         return _highestCount - _lowestCount;
     }
 
     /**
-    * @returns Retorna true caso não haja elementos na fila; retorna false caso não haja elementos na fila;
+     * Analisa se a Fila está vazia
+    * @returns {Boolean} boolean
      */
     this.isEmpty = () => {
         return this.size() === 0;
     }
 
     /**
-     * @returns Retorna uma string contendo todos os elementos da fila separados por virgula
+     * @returns {String} Retorna uma string contendo todos os elementos da fila separados por virgula
      */
     this.toString = () => {
         if (this.isEmpty()) return '';

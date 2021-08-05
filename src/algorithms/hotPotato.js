@@ -6,7 +6,7 @@ const queue=new Queue();
 /**
  * 
  * @param {*} list Array de de elementos a serem sorteados;
- * @returns {object} winner, eliminated 
+ * @returns {object} { winner, eliminated } 
  */
 function hotPotato(list){
 

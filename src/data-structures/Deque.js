@@ -42,7 +42,7 @@ function Deque(){
 
     /**
      * Remove o elemento da última posição da fila
-     * @returns Retorna o elemento removido
+     * @returns {*} Retorna o elemento removido
      */
     this.removeBack=()=>{
         if(this.isEmpty()) return undefined;
@@ -54,22 +54,23 @@ function Deque(){
     }
 
     /**
-     * @returns Retorna o elemento da primeira posição da fila
+     * @returns {*} Retorna o elemento da primeira posição da fila
      */
     this.peekFront=()=> _itens[_lowestCount];
     
     /**
-     * @returns Retorna o elemento da última posição da fila
+     * @returns {*} Retorna o elemento na última posição da fila
      */
     this.peekBack=()=> _itens[_highestCount-1];
 
     /**
-     * @returns Retorna o numero de elementos contidos na pilha
+     * @returns {number} Retorna o numero de elementos contidos na pilha
      */
     this.size=()=> _highestCount-_lowestCount;
 
     /**
-     * @returns Retorna true caso a pilha esteja vazia; retorna false caso contenha algum elemento;
+     * Analisa se a Fila está vazia
+     * @returns {Boolean} boolean
      */
     this.isEmpty=()=> this.size()===0;
 
@@ -83,7 +84,7 @@ function Deque(){
     }
 
     /**
-     * @returns Retorna uma string contendo todos os elementos separados por virgula
+     * @returns {string} Retorna uma string contendo todos os elementos separados por virgula
      */
     this.toString=()=>{
         if(this.isEmpty()) return '';
