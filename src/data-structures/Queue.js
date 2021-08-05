@@ -7,7 +7,6 @@ function Queue() {
 
     let _lowestCount = 0;
     let _highestCount = 0;
-    let _ = 0;
     let _itens = {};
 
     /**
@@ -77,4 +76,4 @@ function Queue() {
 
 }
 
-module.exports = Queue;
+export default Queue;

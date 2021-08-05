@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/aloisiot/estruturas-de-dados-e-algoritmos-com-javascript/issues"
   },
-  "homepage": "https://github.com/aloisiot/estruturas-de-dados-e-algoritmos-com-javascript#readme"
+  "homepage": "https://github.com/aloisiot/estruturas-de-dados-e-algoritmos-com-javascript#readme",
+  "dependencies": {
+    "typescript": "^4.3.5"
+  }
 }
