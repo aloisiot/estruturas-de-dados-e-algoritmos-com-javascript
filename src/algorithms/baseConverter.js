@@ -8,7 +8,7 @@
  * @returns {string} string contendo o valor em binário;
  */
 
-function baseConverter(decimalNum, base) {
+module.exports = function baseConverter(decimalNum, base) {
     const Stack = require("../data-structures/Stack");
     const remStack = new Stack();
     let number = decimalNum
@@ -31,7 +31,3 @@ function baseConverter(decimalNum, base) {
 
     return baseString;
 }
-
-
-baseConverter(12,2)
-module.exports = baseConverter;

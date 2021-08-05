@@ -6,7 +6,7 @@ const Deque = require('../data-structures/Deque');
  * @returns {Boolean} boolean
  * @param {*} aString String a ser analisada
  */
-function palindromeCheck(aString){
+ module.exports=function palindromeCheck(aString){
     if(aString===undefined||aString===null||(aString.length===0&&aString!==null)){
         return false;
     }
@@ -26,4 +26,3 @@ function palindromeCheck(aString){
     return isEqual;
 
 }
-module.exports=palindromeCheck;
