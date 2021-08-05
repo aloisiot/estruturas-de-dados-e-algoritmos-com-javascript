@@ -4,16 +4,14 @@
  * { Class } Estrutura de dados indexada do tipo Pilha
  */
 
-class Stack {
-    constructor() {
+function Stack(){
         this.count = 0
         this.itens = {};
-    }
 
     /**
      * @returns Retorna true caso não haja elementos na fila; retorna false caso não haja elementos na fila;
      */
-    isEmpty() {
+    this.isEmpty=()=> {
         return this.count === 0;
     }
 
@@ -21,7 +19,7 @@ class Stack {
      * Insere um novo elemento na pilha
      * @param {*} item Elemento a ser inserido na pilha na pinha
      */
-    push(item) {
+    this.push=(item)=> {
         this.itens[this.count] = item;
         this.count++;
     }
@@ -30,7 +28,7 @@ class Stack {
      * Remove o ultimo elemento da pilha
      * @returns Retorna o valor removido; caso a pilha esteja vazia retorna undefined
      */
-    pop() {
+    this.pop=()=> {
         if (this.isEmpty()) return undefined;
 
         this.count--;
@@ -42,28 +40,28 @@ class Stack {
     /**
      * @returns Retorna o elemento contido no topo da pilha; caso a pilha esteja vazia retorna undefined
      */
-    peek() { 
+    this.peek=()=> { 
         return this.itens[this.count - 1]; 
     }
 
     /**
      * @returns Retorna o número de elementos contidos na pilha;
      */
-    size() { 
+    this.size=()=> { 
         return this.count; 
     }
 
     /**
      * Remove todos os elementos da pilha;
      */
-    clear() { 
+    this.clear=()=> { 
         this.itens = {}; 
     }
 
     /**
      * @returns Retorna uma string contendo todos os elementos da pilha separados por virgula
      */
-    toString() {
+    this.toString=()=> {
         if (this.isEmpty()) return '';
 
         let objString = `${this.itens[0]}`;
