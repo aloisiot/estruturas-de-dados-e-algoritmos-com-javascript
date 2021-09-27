@@ -104,6 +104,10 @@ module.exports = function Deque(){
         return undefined;
     }
 
+    /**
+     * Uma string com todos os elementos da fila separados por ', ' será retornada.
+     * @returns Uma string contendo os elementos.
+     */
     this.toString = () =>{
         let result = "";
         for(let i = _lowestCount; i < _count; i++){

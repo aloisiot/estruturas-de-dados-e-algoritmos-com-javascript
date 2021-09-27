@@ -5,8 +5,8 @@
  */
 
 module.exports=function Stack(){
-        let _count = 0
-        let _itens = {};
+    let _count = 0
+    let _itens = {};
 
     /**
      * Analisa se a Pilha está vazia

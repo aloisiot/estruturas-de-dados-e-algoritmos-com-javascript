@@ -7,22 +7,25 @@ const Deque = require('../data-structures/Deque');
  * @param {*} aString String a ser analisada
  */
  module.exports=function palindromeCheck(aString){
-    if(aString===undefined||aString===null||(aString.length===0&&aString!==null)){
+    if(aString === undefined || aString === null||(aString.length === 0 && aString !== null)){
         return false;
     }
 
-    let isEqual=true
-    const deque=new Deque()
-    let s=aString.toLocaleLowerCase().split(' ').join('');
+    let result = true;
+    const deque = new Deque()
+    let s = aString.toLocaleLowerCase().split(' ').join('');
 
-    for(let i=0;i<s.length;i++){
+    for(let i = 0;i < s.length; i++){
         deque.addBack(s.charAt(i));
     }
 
-    while(deque.size()>1&&isEqual){
-        if(deque.removeFront()!==deque.removeBack()) isEqual=false
+    while(deque.size() > 1){
+        if(deque.removeFront() !== deque.removeBack()){ 
+            result = false
+            break
+        }
     }
 
-    return isEqual;
+    return result;
 
 }
