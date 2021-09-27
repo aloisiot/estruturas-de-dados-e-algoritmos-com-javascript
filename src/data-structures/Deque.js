@@ -1,99 +1,114 @@
 // @ts-check
 
 /**
- * Estrutura de dados do tipo Deque (ou fila duplamente ligada)
+ * Estrutura de dados do tipo deque ou fila de duas pontas 
  */
-module.exports = function Deque() {
-
-    let _lowestCount = 0;
-    let _highestCount = 0;
-    let _itens = {};
-
-    /**
-     * Adciona um elemento à frente da fila
-     * @param {*} element Elemento a ser adicionado
-     */
-    this.addFront = (element) => {
-        _itens[_lowestCount - 1] = element;
-        _lowestCount--;
-    }
+module.exports = function Deque(){
+   let _count = 0;
+   let _lowestCount = 0;
+   let _itens = {};
 
     /**
-     * Adiciona um elemento ao fim da fila
-     * @param {*} element Elemento a ser adicionado
-     */
-    this.addBack = (element) => {
-        _itens[_highestCount] = element;
-        _highestCount++;
-    }
-
-    /**
-     * Remove o elemento da primenra posição da fila
-     * @returns Retorna o elemento removido
-     */
-    this.removeFront = () => {
-        if (this.isEmpty()) return undefined;
-
-        let result = _itens[_lowestCount];
-        delete _itens[_lowestCount];
-        _lowestCount++;
-        return result;
-    }
-
-    /**
-     * Remove o elemento da última posição da fila
-     * @returns {*} Retorna o elemento removido
-     */
-    this.removeBack = () => {
-        if (this.isEmpty()) return undefined;
-
-        let result = _itens[_highestCount - 1];
-        delete _itens[_highestCount];
-        _highestCount--;
-        return result;
-    }
-
-    /**
-     * @returns {*} Retorna o elemento da primeira posição da fila
-     */
-    this.peekFront = () => _itens[_lowestCount];
-
-    /**
-     * @returns {*} Retorna o elemento na última posição da fila
-     */
-    this.peekBack = () => _itens[_highestCount - 1];
-
-    /**
-     * @returns {number} Retorna o numero de elementos contidos na pilha
-     */
-    this.size = () => _highestCount - _lowestCount;
-
-    /**
-     * Analisa se a Fila está vazia
-     * @returns {Boolean} boolean
-     */
-    this.isEmpty = () => this.size() === 0;
-
-    /**
-     * Remove todos os elementos da fila
+     * Limpa a fila
      */
     this.clear = () => {
+       _itens = {};
         _lowestCount = 0;
-        _highestCount = 0;
-        _itens = {};
+        _count = 0;
     }
 
     /**
-     * @returns {string} Retorna uma string contendo todos os elementos separados por virgula
+     * Retorna a quantidade de elementos na fila
+     * @returns inteiro
      */
-    this.toString = () => {
-        if (this.isEmpty()) return '';
+    this.size = () => _count - _lowestCount;
 
-        let result = _itens[_lowestCount];
-        for (let i = _lowestCount + 1; i < _highestCount; i++) {
-            result += `,${_itens[i]}`;
+    /**
+     * Avalia se a fila está vazia
+     * @returns true caso a fila esteja vazia e false caso contrário
+     */
+    this.isEmpity = () => this.size() == 0;
+
+    /**
+     * Adiciona um elemento à primeira posição da fila.
+     * @param {*} item Item a ser adicionado no inicio da fila.
+     */
+    this.addBack = (item) => {
+        _itens[_count] = item;
+        _count++;
+    }
+
+    /**
+     * Adiciona um elemento à ultima posição da fila.
+     * @param {*} item Item a ser adicionado no inicio da fila.
+     */
+    this.addFront = (item) => {
+        if(this.isEmpity()){
+            this.addBack(item);
+        } else if(_lowestCount > 0) {
+            _lowestCount--;
+            _itens[_lowestCount] = item;
+        } else {
+            for(let i = _count; i > _lowestCount; i++){
+                _itens[i] = _itens[i - 1];
+            }
+
+            _count++;
+            _itens[_lowestCount] = item;
+        }
+    }
+
+    /**
+     * Remove o ultimo elemento da fila
+     * @returns retorna o elemento removido
+     */
+    this.removeBack = () => {
+        let result = undefined;
+        if(!this.isEmpity()){
+            result = _itens[_count - 1];
+            delete _itens[_count - 1];
+            _count--;
         }
         return result;
+    }
 
+    /**
+     * Remove o primenro elemento da fila
+     * @returns retorna o elemento removido
+     */
+    this.removeFront = () => {
+        let result = undefined;
+        if(!this.isEmpity()){
+            result = _itens[_lowestCount];
+            delete _itens[_lowestCount];
+            _lowestCount++;
+        }
+        return result;
+    }
+
+    /**
+     * @returns Retorna o ultimo elemento na fila
+     */
+    this.peekBack = () => {
+        if(!this.isEmpity)
+            return _itens[_count - 1];
+        return undefined;
+    }
+
+    /**
+     * @returns Retorna o primeiro elemento na fila
+     */
+    this.peekFront = () => {
+        if(!this.isEmpity)
+            return _itens[_lowestCount];
+        return undefined;
+    }
+
+    this.toString = () =>{
+        let result = "";
+        for(let i = _lowestCount; i < _count; i++){
+            result += `${_itens[i]} ,`;
+        }
+        return result
     }
 }
