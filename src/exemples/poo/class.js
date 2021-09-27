@@ -12,11 +12,7 @@ class Livros {
     }
 
     printInfo() { // imprime as informações a cerca do livro
-        console.log(`
-        Nome: ${this.nome};
-        Páginas: ${this.paginas};
-        Isbn: ${this.isbn}.
-        `);
+        console.log(`Nome: ${this.nome};\nPáginas: ${this.paginas};\nIsbn: ${this.isbn}.`);
     }
 }
 
@@ -34,15 +30,12 @@ function Filmes(titulo, diretor, duracao) {
     this.diretor = diretor;
 
     this.printInfo = () => { // Imprime as informaçoes a cerca do livro
-        console.log(`
-        Titulo: ${this.titulo};
-        Diretor: ${this.diretor};
-        Duração: ${this.duracao}s.
-        `);
+        console.log(`Titulo: ${this.titulo};\nDiretor: ${this.diretor};\nDuração: ${this.duracao}s.`);
     }
 }
 
 // Instanciaçãos da classe Filmes
 const avatar = new Filmes('Avatar', 'James Cameron', 9720);
 
+console.log("\n");
 avatar.printInfo();// Invocação do metodo criado anteriormente
