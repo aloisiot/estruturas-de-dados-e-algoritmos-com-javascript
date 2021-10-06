@@ -3,12 +3,20 @@
 const { defaultEquals } = require('../util')
 const Node = require('./models/Node')
 
-
+/**
+ * Estrutura de Lista Ligada.
+ * O construtor recebe como parãmetro uma função customizada para realizar comparação entre os elementos da lista.
+ * Caso não seja especificada a função padrão será usada.
+ * @param {*} equalsFn Função para comparação entre os objetos da lista.
+ */
 module.exports = function LinkedList(equalsFn = defaultEquals){
 
     let _count = 0;
     let _head = undefined;
     
+    /**
+     * Função que compara os objetos.
+     */
     this.isEquals = equalsFn;
 
     /**
@@ -36,15 +44,15 @@ module.exports = function LinkedList(equalsFn = defaultEquals){
      */
     this.push = (element) => {
         const node = new Node(element);
-        let currentNode = _head;
+        let current = _head;
 
         if(this.isEmpity()){
             _head = node;
         } else {
-            while(currentNode.next !== undefined){
-                currentNode = currentNode.next
+            while(current.next !== undefined){
+                current = current.next
             }
-            currentNode.next = node;
+            current.next = node;
         }
         _count++;
     }
@@ -58,11 +66,11 @@ module.exports = function LinkedList(equalsFn = defaultEquals){
         if(this.isEmpity())
             return undefined;
             
-        let currentNode = _head;
+        let current = _head;
         for(let i = 0; i < index; i++){
-            currentNode = currentNode.next;
+            current = current.next;
         }
-        return currentNode;
+        return current;
     }
 
     /**
@@ -71,17 +79,17 @@ module.exports = function LinkedList(equalsFn = defaultEquals){
      * @param {*} index índice onde o elemento deve ser inserido.
      * @returns Retorna true caso a inserção seja bem sussedida, e false caso contrário.
      */
-    this.insertAt = (element, index) => {
+    this.insert = (element, index) => {
         const node = new Node(element);
         if(index >= 0 && _count > index ){
             if(index === 0){
                 node.next = _head;
                 _head = node;
             } else {
-                const previousNode = this.getElementAt(index - 1);
-                const currentNode = previousNode.next;
-                node.next = currentNode
-                previousNode.next = node;
+                const previous = this.getElementAt(index - 1);
+                const current = previous.next;
+                node.next = current
+                previous.next = node;
             }
             _count++;
             return true;
@@ -90,18 +98,42 @@ module.exports = function LinkedList(equalsFn = defaultEquals){
     }
 
     /**
+     * Remove determinado elemento da lista.
+     * @param {*} element Elemento a ser removido.
+     * @returns Retorna o elemento removido, caso nada seja removido retorna undefined.
+     */
+    this.remove = (element) => {
+        for(let i = 0; i < this.size(); i++){
+            const current = this.getElementAt(i)
+            if(element === current){
+                const previous = this.getElementAt(i-1);
+                previous.next = current.next;
+                _count--;
+                return current;
+            }
+        }
+        return undefined;
+    }
+
+    /**
      * Remove um elemento numa posição espacifica na lista.
      * @param {*} index índice do elemento a ser removido.
      * @returns Retorna o elemento removido, caso não seja possivel efetuar a remoção undefined será retornado.
      */
     this.removeAt = (index) => {
-        if(!this.isEmpity() && index >= 0 && _count > index ){
+        let removedNode = undefined;
+        if(!this.isEmpity() && index === 0){
+            removedNode = _head;
+            _head = _head.next;
+            _count--;
+        }else if(!this.isEmpity() && index >= 0 && _count > index ){
             const previous = this.getElementAt(index - 1);
-            const removedNode = previous.next;
+            removedNode = previous.next;
             previous.next = removedNode;
+            _count--;
             return removedNode;
         }
-        return undefined;
+        return removedNode;
     }
 
     /**
@@ -111,9 +143,9 @@ module.exports = function LinkedList(equalsFn = defaultEquals){
      */
     this.indexOf = (element) => {
         if(!this.isEmpity()){
-            let currentNode = _head
+            let current = _head
             for(let i = 0; i < _count; i++){
-                if(this.isEquals(currentNode, element)){
+                if(this.isEquals(current, element)){
                     return i;
                 }
             }
