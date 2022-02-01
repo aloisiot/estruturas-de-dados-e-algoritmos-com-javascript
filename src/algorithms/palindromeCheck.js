@@ -2,7 +2,7 @@
 const Deque = require('../data-structures/Deque');
 
 /**
- * Analise se uma string é um palindromo ou não;
+ * Analisa se uma string é um palindromo ou não;
  * @returns {Boolean} boolean
  * @param {*} aString String a ser analisada
  */
